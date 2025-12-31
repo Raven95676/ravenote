@@ -94,9 +94,9 @@ if [ ! -f "${DOMAIN}.crt" ]; then
     exit 1
 fi
 
-rsync -avh "${DOMAIN}.crt" "${CERT_ARCHIVE_PATH}/cert.pem"
-rsync -avh "${DOMAIN}.key" "${CERT_ARCHIVE_PATH}/privkey.pem"
-rsync -avh "${DOMAIN}.crt" "${CERT_ARCHIVE_PATH}/fullchain.pem"
+cp "${DOMAIN}.crt" "${CERT_ARCHIVE_PATH}/cert.pem"
+mv "${DOMAIN}.key" "${CERT_ARCHIVE_PATH}/privkey.pem"
+mv "${DOMAIN}.crt" "${CERT_ARCHIVE_PATH}/fullchain.pem"
 
 chmod 400 "${CERT_ARCHIVE_PATH}/cert.pem"
 chmod 400 "${CERT_ARCHIVE_PATH}/privkey.pem"
@@ -105,8 +105,6 @@ chmod 400 "${CERT_ARCHIVE_PATH}/fullchain.pem"
 chown root:root "${CERT_ARCHIVE_PATH}/cert.pem"
 chown root:root "${CERT_ARCHIVE_PATH}/privkey.pem"
 chown root:root "${CERT_ARCHIVE_PATH}/fullchain.pem"
-
-rm -f "${DOMAIN}.crt" "${DOMAIN}.key"
 
 synosystemctl restart nginx
 ```
