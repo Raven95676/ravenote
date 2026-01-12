@@ -2,8 +2,8 @@
 title: VPS 基本安全措施
 published: 2024-11-22
 description: "拿到 VPS 后的基本安全措施"
-tags: [VPS, Linux, 网络安全, 运维]
-category: '实用技巧'
+tags: [VPS, Linux, 网络安全]
+category: 'Linux运维'
 draft: false 
 ---
 

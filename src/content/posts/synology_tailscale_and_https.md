@@ -2,7 +2,7 @@
 title: 群晖NAS部署Tailscale组网及HTTPS配置实战
 published: 2025-12-31
 description: '基于Tailscale为群晖NAS构建安全内网访问，适用于DSM 7.x环境'
-tags: [群晖,NAS,安全]
+tags: [群晖, NAS, 网络安全]
 category: '实用技巧'
 draft: false 
 ---
