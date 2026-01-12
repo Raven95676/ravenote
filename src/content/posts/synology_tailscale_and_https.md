@@ -19,9 +19,8 @@ draft: false
 tailscale update --yes
 ```
 
-:::note
-根据官方建议，即使是通过套件中心安装的Tailscale也建议通过计划任务进行自动更新
-:::
+> [!NOTE]
+> 根据官方建议，即使是通过套件中心安装的Tailscale也建议通过计划任务进行自动更新
 
 对于DSM7，由于其对软件包行为引入了更严格的限制，导致Tailscale没有创建TUN设备的权限，所以说默认情况下仅允许外部设备连接到NAS，但NAS自己运行的应用程序无法通过Tailscale发起网络连接。如果有需要的话，在DSM中打开控制面板，找到计划任务，新建一个触发任务，事件选择开机，账号设置为root，脚本内容如下：
 
@@ -29,21 +28,19 @@ tailscale update --yes
 /var/packages/Tailscale/target/bin/tailscale configure-host; synosystemctl restart pkgctl-Tailscale.service
 ```
 
-:::important
-确保你正在运行Tailscale v1.22.2或更高版本
-
-升级Tailscale软件包后需要再次运行上述命令
-:::
+> [!IMPORTANT]
+> 确保你正在运行Tailscale v1.22.2或更高版本
+>
+> 升级Tailscale软件包后需要再次运行上述命令
 
 ## 配置HTTPS并自动化
 
 进入Tailscale管理面板，在DNS选项卡下找到HTTPS Certificates，点击Enable HTTPS
 
-:::important
-启用此功能前，请确保MagicDNS已经打开
-
-启用后，机器名称和Tailnet DNS名称将公开可见（不影响安全性）
-:::
+> [!IMPORTANT]
+> 启用此功能前，请确保MagicDNS已经打开
+>
+> 启用后，机器名称和Tailnet DNS名称将公开可见（不影响安全性）
 
 然后我们在DSM中打开控制面板，找到终端机和SNMP，在这里开启SSH。
 
@@ -57,13 +54,12 @@ tailscale cert [Your Domain]
 
 然后在DSM中打开控制面板，找到安全性，然后切换到证书选项卡，点击新建，根据引导导入证书，其中，描述填`Tailscale`，中间证书不用管，留空。
 
-:::important
-务必注意这里描述必须是Tailscale，否则后继配置自动化更新后脚本将找不到证书路径。
-
-自动化更新脚本仅在DSM7下进行过测试。实际使用前建议先在root权限下检查jq命令是否可以找到路径。找不到的情况下，可以参考`/usr/syno/etc/certificate/_archive/INFO`的结构调整jq查询语句，或直接通过sha256比对找到固定的证书目录（可使用`find /usr/syno/etc/certificate/_archive -type f -name cert.pem -exec sha256sum {} \;`快速列出所有cert.pem的sha256，即crt文件的sha256）。
-
-如果修改脚本使用固定目录，日后在删除并重新导入证书等情况下路径会变，到时候记得改。
-:::
+> [!IMPORTANT]
+> 务必注意这里描述必须是Tailscale，否则后继配置自动化更新后脚本将找不到证书路径。
+>
+> 自动化更新脚本仅在DSM7下进行过测试。实际使用前建议先在root权限下检查jq命令是否可以找到路径。找不到的情况下，可以参考`/usr/syno/etc/certificate/_archive/INFO`的结构调整jq查询语句，或直接通过sha256比对找到固定的证书目录（可使用`find /usr/syno/etc/certificate/_archive -type f -name cert.pem -exec sha256sum {} \;`快速列出所有cert.pem的sha256，即crt文件的sha256）。
+>
+> 如果修改脚本使用固定目录，日后在删除并重新导入证书等情况下路径会变，到时候记得改。
 
 导入完成后，记得点击设置，将相关服务使用的证书切换为刚刚导入的Tailscale证书。其实这时候HTTPS已经配置好了，但是每当证书过期时，我们都需要重新手动干一遍上面的操作，很是麻烦，尤其是2028年起证书有效期会被调整为45天
 

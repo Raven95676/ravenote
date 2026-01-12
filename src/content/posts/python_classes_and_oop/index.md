@@ -912,13 +912,10 @@ print(Book.__bases__)  # (<class 'object'>,)
 
 #### Python对象系统——从根源开始
 
-:::note
-本节内容主要参考Shalabh Chaturvedi所编写的《Python Types and Objects》，本人（Raven95676）出于教育目的进行整理与二次创作。由于原作者保留所有权利，本节内容不以CC BY-NC-SA 4.0协议发布。如原版权人认为本节内容涉及版权问题，请联系本人（Raven95676）移除相关内容。
-:::
-
-:::note
-本节内容引用图片较为古老，请自行将图中所有的形如`<type 'object'>`的视为`<class 'object'>`。
-:::
+> [!NOTE]
+> 本节内容主要参考Shalabh Chaturvedi所编写的《Python Types and Objects》，本人（Raven95676）出于教育目的进行整理与二次创作。由于原作者保留所有权利，本节内容不以CC BY-NC-SA 4.0协议发布。如原版权人认为本节内容涉及版权问题，请联系本人（Raven95676）移除相关内容。
+>
+> 本节内容引用图片较为古老，请自行将图中所有的形如`<type 'object'>`的视为`<class 'object'>`。
 
 我们现在从头开始构建Python对象系统。让我们从最基本的地方开始——一张白纸。
 
@@ -1798,13 +1795,10 @@ YAGNI是You aren't gonna need it的缩写，直译就是“你不会需要它”
 
 ### SOLID
 
-:::note
-本节内容参考了维基百科相关定义。由于维基百科相关内容遵循CC BY-SA 4.0协议，本节内容不以CC BY-NC-SA 4.0协议发布。
-:::
-
-:::note
-本节内容主要参考梅雪松所著的《写了这么多年代码，你真的了解SOLID吗？》。
-:::
+> [!NOTE]
+> 本节内容参考了维基百科相关定义。由于维基百科相关内容遵循CC BY-SA 4.0协议，本节内容不以CC BY-NC-SA 4.0协议发布。
+>
+> 本节内容主要参考梅雪松所著的《写了这么多年代码，你真的了解SOLID吗？》。
 
 ![python_classes_and_oop_9](./images/9.png)
 （图源 写了这么多年代码，你真的了解SOLID吗？By 梅雪松）

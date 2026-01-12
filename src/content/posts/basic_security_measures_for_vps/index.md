@@ -19,9 +19,8 @@ draft: false
 
 在继续阅读本文之前，建议提前阅读由 [LUG@USTC](https://lug.ustc.edu.cn/) 编写的：<https://101.lug.ustc.edu.cn/>
 
-:::note
-本文与 <https://github.com/ustclug/Linux101-docs> 项目无关
-:::
+> [!NOTE]
+> 本文与 <https://github.com/ustclug/Linux101-docs> 项目无关
 
 ## 安全管理系统
 
@@ -123,9 +122,8 @@ sudo systemctl restart ssh.service
 
 如果不在乎通过套接字激活节省的内存，可以通过以下命令恢复到非套接字激活：
 
-:::warning
-务必确认配置文件正常。
-:::
+> [!WARNING]
+> 务必确认配置文件正常。
 
 ```bash
 sudo systemctl disable --now ssh.socket
@@ -265,9 +263,8 @@ curl -s -X POST "$webhook_url" \
 
 ### 使用密钥登录
 
-:::tip
-如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。
-:::
+> [!TIP]
+> 如果 VPS 厂商提供了 SSH 密钥绑定功能，可以忽略本节内容并按照 VPS 厂商提供的方法绑定。
 
 在 powershell 中运行：
 
@@ -314,9 +311,8 @@ sudo systemctl restart ssh
 
 ### 启用 UFW 防火墙
 
-:::tip
-如果 VPS 厂商提供了防火墙功能，且没有复杂的需求，可以忽略本节内容并使用 VPS 厂商提供的防火墙。
-:::
+> [!TIP]
+> 如果 VPS 厂商提供了防火墙功能，且没有复杂的需求，可以忽略本节内容并使用 VPS 厂商提供的防火墙。
 
 在正式启用 UFW 之前，我们需要先设置规则。我们首先来设置 UFW 的默认行为：
 
@@ -381,9 +377,8 @@ sudo ufw delete 1 # 按照 numbered 的编号删除也行
 
 在确定所有规则均成功设置后，通过以下命令启动 \ 关闭 \ 重启 UFW
 
-:::warning
-启动防火墙前务必保证 22 端口（或者其他 SSH 端口）被放行。
-:::
+> [!WARNING]
+> 启动防火墙前务必保证 22 端口（或者其他 SSH 端口）被放行。
 
 ```bash
 sudo ufw enable|disable|reload
@@ -391,9 +386,8 @@ sudo ufw enable|disable|reload
 
 如果需要重置规则，请使用：
 
-:::warning
-重置规则前务必保证 UFW 处于关闭状态。
-:::
+> [!WARNING]
+> 重置规则前务必保证 UFW 处于关闭状态。
 
 ```bash
 sudo ufw reset
@@ -431,9 +425,8 @@ ufw allow log 22/tcp
 
 #### 使用 ufw 禁止 ping
 
-:::note
-保守起见，与 destination-unreachable、time-exceeded、parameter-problem 相关的规则已移除。
-:::
+> [!NOTE]
+> 保守起见，与 destination-unreachable、time-exceeded、parameter-problem 相关的规则已移除。
 
 ufw 本身没有直接支持阻止 icmp 协议的命令。ufw 在 /etc/ufw/before.rules 中定义了针对 ping 的允许规则，我们可以修改 ACCEPT 为 DROP 来达成禁止 ping 的目的：
 
@@ -451,9 +444,8 @@ ufw 本身没有直接支持阻止 icmp 协议的命令。ufw 在 /etc/ufw/befor
 -A ufw6-before-output -p icmpv6 --icmpv6-type echo-reply -j DROP
 ```
 
-:::info
-其余 icmpv6 规则应保持不变
-:::
+> [!INFO]
+> 其余 icmpv6 规则应保持不变
 
 ### 限定 SSH 登录 IP
 
@@ -607,9 +599,8 @@ print (check ("192.168.0.256", "example.com"))
 
 ### 于是我们打个补丁
 
-{{< notice tip >}}
-如果 VPS 厂商提供了防火墙功能，可以直接使用 VPS 厂商提供的防火墙。
-:::
+> [!TIP]
+> 如果 VPS 厂商提供了防火墙功能，可以直接使用 VPS 厂商提供的防火墙。
 
 ~~各位可以直接用这个方法~~
 
@@ -679,9 +670,8 @@ sudo ufw delete 序号
 
 虽然 Cloudflare 对于滥用肯定是限制的，但是为了以防万一，我们还可以再做点安全措施 —— 经过身份验证的源服务器拉取。
 
-:::info
-必须确保 SSL/TLS 加密模式为完全或者完全（严格）
-:::
+> [!INFO]
+> 必须确保 SSL/TLS 加密模式为完全或者完全（严格）
 
 下载[Cloudflare证书](https://developers.cloudflare.com/ssl/static/authenticated_origin_pull_ca.pem)并进行配置即可。
 
@@ -702,13 +692,12 @@ ssl_verify_client on;
 
 ### Docker 基本使用
 
-:::note
-发现成熟的文档，不再重复造轮子。
-
-本文与 <https://github.com/yeasy/docker_practice> 项目无关
-
-~~小小的偷个懒~~
-:::
+> [!NOTE]
+> 发现成熟的文档，不再重复造轮子。
+>
+> 本文与 <https://github.com/yeasy/docker_practice> 项目无关
+>
+> ~~小小的偷个懒~~
 
 附注：如果 `docker-compose` 提示找不到命令，试试 `docker compose`。docker compose 现已弃用 `version` 字段，现有的 compose 配置文件中 `version` 字段将被忽略并显示一条警告。
 
