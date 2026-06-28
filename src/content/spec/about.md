@@ -11,4 +11,4 @@
 
 指纹：60045B5AD57A499DD6B106F7EB433C2ACE1A701D
 
-下载：[点此下载GPG公钥](https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x60045b5ad57a499dd6b106f7eb433c2ace1a701d)
+下载：[点此查询GPG公钥](https://keys.openpgp.org/search?q=60045B5AD57A499DD6B106F7EB433C2ACE1A701D)
