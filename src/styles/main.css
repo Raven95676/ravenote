@@ -22,6 +22,34 @@
 }
 
 @layer components {
+    /* Keep all component-layer rules in the Tailwind entrypoint so production
+       CSS extraction cannot register this layer before Tailwind's base layer. */
+    .enable-banner.is-home #banner-wrapper {
+        @apply h-(--banner-height-home) translate-y-(--banner-height-extend)
+    }
+    .enable-banner #banner-wrapper {
+        @apply h-(--banner-height-home)
+    }
+
+    .enable-banner.is-home #banner {
+        @apply h-(--banner-height-home) translate-y-0
+    }
+    .enable-banner #banner {
+        @apply h-(--banner-height-home) translate-y-(--bannerOffset)
+    }
+    .enable-banner.is-home #main-grid {
+        @apply translate-y-(--banner-height-extend);
+    }
+    .enable-banner #top-row {
+        @apply h-[calc(var(--banner-height-home)-4.5rem)] transition-all duration-300
+    }
+    .enable-banner.is-home #sidebar-sticky {
+        @apply top-[calc(1rem-var(--banner-height-extend))]
+    }
+    .navbar-hidden {
+        @apply opacity-0 -translate-y-16
+    }
+
     .card-base {
         @apply rounded-(--radius-large) overflow-hidden bg-(--card-bg) transition;
     }
