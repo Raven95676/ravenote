@@ -25,9 +25,6 @@
     .card-base {
         @apply rounded-(--radius-large) overflow-hidden bg-(--card-bg) transition;
     }
-    h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
-        @apply transition;
-    }
     .card-shadow {
         @apply drop-shadow-[0_2px_4px_rgba(0,0,0,0.005)]
     }
@@ -64,6 +61,19 @@
             }
         }
     }
+
+    .dark .btn-plain {
+        color: rgb(255 255 255 / 75%) !important;
+    }
+
+    .dark .btn-regular {
+        color: rgb(255 255 255 / 75%) !important;
+    }
+
+    .dark .btn-plain:hover {
+        color: var(--primary) !important;
+    }
+
     .btn-regular {
         @apply transition flex items-center justify-center bg-(--btn-regular-bg) hover:bg-(--btn-regular-bg-hover) active:bg-(--btn-regular-bg-active)
         text-(--btn-content) dark:text-white/75
@@ -77,10 +87,6 @@
     .toc-hide,
     .toc-not-ready {
         @apply opacity-0 pointer-events-none
-    }
-
-    #toc-inner-wrapper {
-        mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black calc(100% - 2rem), transparent 100%);
     }
 
     .hide-scrollbar {

@@ -1,6 +1,11 @@
 @reference "./main.css";
 
 .custom-md {
+    > section {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 6000px;
+    }
+
     h1 {
         @apply text-3xl;
     }
@@ -114,10 +119,16 @@
 
     }
 
-    .katex-display-container {
+    .katex-display {
         max-width: 100%;
         overflow-x: auto;
-        margin: 1em 0;
+        overflow-y: hidden;
     }
-    
+}
+
+@media print {
+    .custom-md > section {
+        content-visibility: visible;
+        contain-intrinsic-size: none;
+    }
 }
