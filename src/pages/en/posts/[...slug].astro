@@ -1,0 +1,16 @@
+---
+import PostDetail from "@components/PostDetail.astro";
+import { getPostSlug } from "@i18n/locale";
+import { getSortedPosts } from "@utils/content-utils";
+
+export async function getStaticPaths() {
+	const blogEntries = await getSortedPosts("en");
+	return blogEntries.map((entry) => ({
+		params: { slug: getPostSlug(entry.id) },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+---
+<PostDetail entry={entry}></PostDetail>

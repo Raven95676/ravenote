@@ -1,20 +1,8 @@
 import type { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
 
 export type SiteConfig = {
-	title: string;
-	subtitle: string;
-
-	lang:
-		| "en"
-		| "zh_CN"
-		| "zh_TW"
-		| "ja"
-		| "ko"
-		| "es"
-		| "th"
-		| "vi"
-		| "tr"
-		| "id";
+	title: Record<"zh" | "en", string>;
+	subtitle: Record<"zh" | "en", string>;
 
 	themeColor: {
 		hue: number;
@@ -63,7 +51,7 @@ export type NavBarConfig = {
 export type ProfileConfig = {
 	avatar?: string;
 	name: string;
-	bio?: string;
+	bio?: Record<"zh" | "en", string>;
 	links: {
 		name: string;
 		url: string;

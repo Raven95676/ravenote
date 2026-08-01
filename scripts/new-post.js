@@ -3,6 +3,9 @@
 import fs from "fs"
 import path from "path"
 
+const LOCALES = ["zh", "en"]
+const DEFAULT_LOCALE = "zh"
+
 function getDate() {
   const today = new Date()
   const year = today.getFullYear()
@@ -14,9 +17,15 @@ function getDate() {
 
 const args = process.argv.slice(2)
 
+// Optional first argument: locale (zh or en)
+let locale = DEFAULT_LOCALE
+if (args.length > 0 && LOCALES.includes(args[0])) {
+  locale = args.shift()
+}
+
 if (args.length === 0) {
   console.error(`Error: No filename argument provided
-Usage: npm run new-post -- <filename>`)
+Usage: npm run new-post -- [zh|en] <filename>`)
   process.exit(1) // Terminate the script and return error code 1
 }
 
@@ -28,7 +37,7 @@ if (!fileExtensionRegex.test(fileName)) {
   fileName += ".md"
 }
 
-const targetDir = "./src/content/posts/"
+const targetDir = path.join("./src/content/posts/", locale)
 const fullPath = path.join(targetDir, fileName)
 
 if (fs.existsSync(fullPath)) {
@@ -49,8 +58,7 @@ description: ''
 image: ''
 tags: []
 category: ''
-draft: false 
-lang: ''
+draft: false
 ---
 `
 

@@ -1,7 +1,9 @@
 ---
 import type { MarkdownHeading } from "astro";
+import I18nKey from "../../i18n/i18nKey";
+import { stripLocalePrefix, toLocale } from "../../i18n/locale";
+import { i18n } from "../../i18n/translation";
 import { siteConfig } from "../../config";
-import { url } from "../../utils/url-utils";
 import Categories from "./Categories.astro";
 import Profile from "./Profile.astro";
 import Tag from "./Tags.astro";
@@ -15,7 +17,8 @@ interface Props {
 
 const className = Astro.props.class;
 const headings = Astro.props.headings ?? [];
-const isPostsRoute = Astro.url.pathname.startsWith(url("/posts/"));
+const lang = toLocale(Astro.currentLocale);
+const isPostsRoute = stripLocalePrefix(Astro.url.pathname).startsWith("/posts/");
 const showToc = siteConfig.toc.enable && isPostsRoute && headings.length > 0;
 ---
 <div id="sidebar" class:list={[className, "w-full flex flex-col"]}>
@@ -26,7 +29,7 @@ const showToc = siteConfig.toc.enable && isPostsRoute && headings.length > 0;
         {showToc ? (
             <>
                 <div id="sidebar-sticky" class="transition-all duration-700 w-full sticky top-4 z-10">
-                    <WidgetLayout id="sidebar-toc" name="目录" class="hidden lg:block">
+                    <WidgetLayout id="sidebar-toc" name={i18n(I18nKey.tableOfContents, lang)} class="hidden lg:block">
                         <div id="toc-inner-wrapper" class="relative max-h-[min(50vh,28rem)] overflow-y-auto overflow-x-hidden hide-scrollbar pr-1">
                             <TOC headings={headings} class="relative block"></TOC>
                         </div>

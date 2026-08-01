@@ -2,9 +2,11 @@
 import { onMount } from "svelte";
 
 import I18nKey from "../i18n/i18nKey";
+import type { Locale } from "../i18n/locale";
 import { i18n } from "../i18n/translation";
-import { getPostUrlBySlug } from "../utils/url-utils";
+import { getPostUrlById } from "../utils/url-utils";
 
+export let lang: Locale = "zh";
 export let tags: string[] = [];
 export let categories: string[] = [];
 export let sortedPosts: Post[] = [];
@@ -99,13 +101,13 @@ onMount(async () => {
                     ></div>
                 </div>
                 <div class="w-[70%] md:w-[80%] transition text-left text-50">
-                    {group.posts.length} {i18n(group.posts.length === 1 ? I18nKey.postCount : I18nKey.postsCount)}
+                    {group.posts.length} {i18n(group.posts.length === 1 ? I18nKey.postCount : I18nKey.postsCount, lang)}
                 </div>
             </div>
 
             {#each group.posts as post}
                 <a
-                        href={getPostUrlBySlug(post.slug)}
+                        href={getPostUrlById(post.slug)}
                         aria-label={post.data.title}
                         class="group btn-plain block! h-10 w-full rounded-lg hover:text-[initial]"
                 >

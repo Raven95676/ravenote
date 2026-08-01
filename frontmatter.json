@@ -5,8 +5,12 @@
   "frontMatter.content.publicFolder": "public",
   "frontMatter.content.pageFolders": [
     {
-      "title": "posts",
-      "path": "[[workspace]]/src/content/posts"
+      "title": "posts (zh)",
+      "path": "[[workspace]]/src/content/posts/zh"
+    },
+    {
+      "title": "posts (en)",
+      "path": "[[workspace]]/src/content/posts/en"
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
@@ -55,11 +59,6 @@
           "title": "draft",
           "name": "draft",
           "type": "boolean"
-        },
-        {
-          "title": "language",
-          "name": "language",
-          "type": "string"
         }
       ]
     }

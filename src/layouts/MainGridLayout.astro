@@ -18,18 +18,19 @@ interface Props {
 	title?: string;
 	banner?: string;
 	description?: string;
-	lang?: string;
 	setOGTypeArticle?: boolean;
 	headings?: MarkdownHeading[];
+	/** URL of this page in the other locale, used by the language switcher. */
+	alternateUrl?: string;
 }
 
 const {
 	title,
 	banner,
 	description,
-	lang,
 	setOGTypeArticle,
 	headings = [],
+	alternateUrl,
 } = Astro.props;
 const hasBannerCredit =
 	siteConfig.banner.enable && siteConfig.banner.credit.enable;
@@ -40,13 +41,13 @@ const mainPanelTop = siteConfig.banner.enable
 	: "5.5rem";
 ---
 
-<Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle}>
+<Layout title={title} banner={banner} description={description} setOGTypeArticle={setOGTypeArticle}>
 
 <!-- Navbar -->
 <slot slot="head" name="head"></slot>
 <div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-(--page-width) px-0 md:px-4 mx-auto" class:list={[""]}>
     <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all">
-        <Navbar></Navbar>
+        <Navbar alternateUrl={alternateUrl}></Navbar>
     </div>
 </div>
 

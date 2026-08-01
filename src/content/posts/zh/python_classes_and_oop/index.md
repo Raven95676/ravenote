@@ -2114,7 +2114,7 @@ KISS强调简单性，而实现简单性的主要手段之一就是通过合理�
 - [【Unknown】菜鸟教程 Python 3 教程](https://www.runoob.com/python3/python3-tutorial.html)
 - [【2012】Python 魔术方法指南](https://pycoders-weekly-chinese.readthedocs.io/en/latest/issue6/a-guide-to-pythons-magic-methods.html)
 - [【2006】A Simple DIP Example](https://flylib.com/books/en/4.444.1.71/1/)
-- 【2018】写了这么多年代码，你真的了解SOLID吗？By 梅雪松(该地址已不可达)：hxxps://insights.thoughtworks.cn/what-is-solid-principle/
-- 【2009】Python Types and Objects By Shalabh Chaturvedi(该地址已不可达)：hxxp://www.cafepy.com/article/python_types_and_objects/python_types_and_objects.html
+- 【2018】写了这么多年代码，你真的了解SOLID吗？By 梅雪松(该地址已不可达)：`hxxps://insights.thoughtworks.cn/what-is-solid-principle/`
+- 【2009】Python Types and Objects By Shalabh Chaturvedi(该地址已不可达)：`hxxp://www.cafepy.com/article/python_types_and_objects/python_types_and_objects.html`
 
-![Not By AI](../images/not-by-ai.png)
+![Not By AI](../../images/not-by-ai.png)

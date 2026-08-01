@@ -8,9 +8,14 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "渡鸦的随手记",
-	subtitle: "正于此地，愿你找到需要的知识",
-	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
+	title: {
+		zh: "渡鸦的随手记",
+		en: "Raven Note",
+	},
+	subtitle: {
+		zh: "正于此地，愿你找到需要的知识",
+		en: "Right here, may you find the knowledge you need",
+	},
 	themeColor: {
 		hue: 260, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
 		fixed: true, // Hide the theme color picker for visitors
@@ -45,7 +50,10 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/avatar.webp", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "Raven95676",
-	bio: "正于此地，愿你找到需要的知识",
+	bio: {
+		zh: "正于此地，愿你找到需要的知识",
+		en: "Right here, may you find the knowledge you need",
+	},
 	links: [
 		{
 			name: "GitHub",

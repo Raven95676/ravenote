@@ -979,4 +979,4 @@ proxy_redirect https://$host:[port] https://$host;
 * <https://linux.do/t/topic/267502/135>
 * <https://linux.do/t/topic/267502/175>
 
-![Not By AI](../images/not-by-ai.png)
+![Not By AI](../../images/not-by-ai.png)

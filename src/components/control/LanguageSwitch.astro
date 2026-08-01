@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+import {
+	LOCALE_LABELS,
+	otherLocale,
+	stripLocalePrefix,
+	toLocale,
+} from "@i18n/locale";
+import { localeUrl } from "@utils/url-utils";
+
+interface Props {
+	/**
+	 * Explicit URL of this page in the other locale (e.g. the translated post).
+	 * Falls back to mirroring the current path under the other locale.
+	 */
+	alternateUrl?: string;
+	class?: string;
+}
+
+const { alternateUrl } = Astro.props;
+const className = Astro.props.class;
+
+const lang = toLocale(Astro.currentLocale);
+const other = otherLocale(lang);
+const href = alternateUrl ?? localeUrl(stripLocalePrefix(Astro.url.pathname), other);
+---
+<!-- data-no-swup: switching locale requires a full page load so that the navbar,
+     which lives outside the swup containers, is re-rendered in the new locale -->
+<a href={href} data-no-swup aria-label={LOCALE_LABELS[other]}
+   class:list={[className, "btn-plain scale-animation rounded-lg h-11 px-3 active:scale-90"]}>
+    <div class="flex items-center gap-1">
+        <Icon name="material-symbols:translate" class="text-[1.25rem]" />
+        <span class="text-sm font-bold">{LOCALE_LABELS[other]}</span>
+    </div>
+</a>

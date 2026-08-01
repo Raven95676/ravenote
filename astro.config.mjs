@@ -33,6 +33,15 @@ export default defineConfig({
 	trailingSlash: "always",
 	compressHTML: true,
 	devToolbar: { enabled: false },
+	// Keep in sync with src/i18n/locale.ts
+	i18n: {
+		locales: ["zh", "en"],
+		defaultLocale: "zh",
+		routing: {
+			// zh pages live at the site root, en pages under /en/
+			prefixDefaultLocale: false,
+		},
+	},
 	integrations: [
 		mermaid(),
 		swup({
@@ -102,7 +111,16 @@ export default defineConfig({
 			},
 		}),
 		svelte(),
-		sitemap(),
+		sitemap({
+			// Generate hreflang alternate links between /... and /en/...
+			i18n: {
+				defaultLocale: "zh",
+				locales: {
+					zh: "zh-CN",
+					en: "en",
+				},
+			},
+		}),
 	],
 	markdown: {
 		processor: unified({
